@@ -1,0 +1,13 @@
+;; Real-world organization location / contact.
+;; :head-role is institutional title only — no personal names.
+{:ooyake-id "gov.fsm"
+  :official-url "https://www.fsmgov.org/"
+  :name-en "Federated States of Micronesia"
+  :name-local "Micronesia"
+  :wikidata "Q702"
+  :head-role "public procurement authority"
+  :head-role-note "institutional office title only; personal names of current office-holders are intentionally NOT stored"
+  :contact-page "https://www.wikidata.org/wiki/Q42751"
+  :sourced-from "com-etzhayyim-ooyake gov-units (verbatim where present)"
+  :hq {:line-en "Palikir" :country "fsm" :kind "capital" :provenance "https://www.wikidata.org/wiki/Q42751" :last-verified "2026-07-10" :sourcing "authoritative"}
+}
