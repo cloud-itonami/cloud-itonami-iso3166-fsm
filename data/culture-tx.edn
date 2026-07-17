@@ -1,0 +1,11 @@
+;; data/culture-tx.edn — DataScript tx-data derived from src/culture/facts.cljc
+;; `culture.facts/catalog` (ADR-2607171400 addendum 2, Wave 1 country-level).
+;; Same shape across every cloud-itonami-iso3166-* sibling. Do not hand-edit;
+;; regenerate from the catalog.
+
+[
+#:culture{:id "fsm.beverage.sakau", :name "Sakau (kava)", :country "FSM", :kind :beverage, :summary "In Pohnpei kava is known as sakau, prepared by mixing the root with the fibrous bark of Hibiscus tiliaceus before pressing; Pohnpei is among the Pacific islands where kava was historically cultivated.", :url "https://en.wikipedia.org/wiki/Kava", :url-provenance :wikipedia-en, :retrieved-at "2026-07-17"}
+#:culture{:id "fsm.craft.rai-stones", :name "Rai stones", :country "FSM", :kind :craft, :summary "Large limestone disks with central holes manufactured and treasured by the native inhabitants of the Yap islands in Micronesia, used as currency for ceremonial transactions with ownership tracked through oral history.", :url "https://en.wikipedia.org/wiki/Rai_stones", :url-provenance :wikipedia-en, :retrieved-at "2026-07-17"}
+#:culture{:id "fsm.festival.yap-day", :name "Yap Day", :country "FSM", :kind :festival, :summary "Legal holiday in Yap State, one of the four states of the Federated States of Micronesia, held annually on 1 March and celebrating traditional Yapese culture with dances and competitions.", :url "https://en.wikipedia.org/wiki/Yap_Day", :url-provenance :wikipedia-en, :retrieved-at "2026-07-17"}
+#:culture{:id "fsm.heritage.nan-madol", :name "Nan Madol", :country "FSM", :kind :heritage, :summary "Archaeological site of artificial islands linked by canals on Pohnpei in the Federated States of Micronesia, capital of the Saudeleur dynasty until about 1628; designated a UNESCO World Heritage Site in 2016.", :url "https://en.wikipedia.org/wiki/Nan_Madol", :url-provenance :wikipedia-en, :retrieved-at "2026-07-17"}
+]
