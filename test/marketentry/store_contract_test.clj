@@ -1,0 +1,51 @@
+(ns marketentry.store-contract-test
+  "MemStore ≡ DatomicStore parity for the Store protocol."
+  (:require [clojure.test :refer [deftest is testing]]
+            [marketentry.store :as store]
+            [marketentry.registry :as registry]))
+
+(defn- exercise [s]
+  (store/commit-record! s {:effect :engagement/upsert
+                           :value {:id "eng-x" :operator "X LLC" :jurisdiction "FSM"
+                                   :base-fee 100 :monthly-rate 10 :monitoring-months 1
+                                   :claimed-fee 110.0
+                                   :contract-type :construction :contract-value 300000.0
+                                   :citizen-bidder? true :pct-fsm-ownership 0.60
+                                   :fsm-resident-1yr? true :paid-fsm-gross-revenue-tax-1yr? true
+                                   :pct-citizen-jobsite-workers 0.30 :pct-domestic-materials 0.30
+                                   :claimed-preference-pct 0.15
+                                   :requires-fsm-tax-filing? true :fsm-tax-filing-verified? true
+                                   :drafted? false :submitted? false :status :intake}})
+  (store/commit-record! s {:effect :assessment/set
+                           :path ["eng-x"]
+                           :payload {:jurisdiction "FSM" :checklist ["a"] :spec-basis "x"}})
+  (store/commit-record! s {:effect :engagement/mark-drafted :path ["eng-x"]})
+  (store/commit-record! s {:effect :engagement/mark-submitted :path ["eng-x"]})
+  (store/append-ledger! s {:t :committed :op :test})
+  {:engagement (store/engagement s "eng-x")
+   :assessment (store/assessment-of s "eng-x")
+   :drafts (store/draft-history s)
+   :submits (store/submit-history s)
+   :ledger (store/ledger s)
+   :drafted? (store/engagement-already-drafted? s "eng-x")
+   :submitted? (store/engagement-already-submitted? s "eng-x")})
+
+(deftest mem-and-datomic-parity
+  (let [mem (store/seed-db)
+        dat (store/datomic-seed-db)
+        ;; use empty stores for parity of exercised mutations
+        mem* (store/->MemStore (atom {:engagements {} :assessments {} :ledger []
+                                      :draft-sequences {} :draft-records []
+                                      :submit-sequences {} :submit-records []}))
+        dat* (store/datomic-store {})
+        m (exercise mem*)
+        d (exercise dat*)]
+    (is (= (:operator (:engagement m)) (:operator (:engagement d))))
+    (is (= (:citizen-bidder? (:engagement m)) (:citizen-bidder? (:engagement d))))
+    (is (= (:claimed-preference-pct (:engagement m)) (:claimed-preference-pct (:engagement d))))
+    (is (true? (:drafted? m)) (true? (:drafted? d)))
+    (is (true? (:submitted? m)) (true? (:submitted? d)))
+    (is (= 1 (count (:drafts m))) (= 1 (count (:drafts d))))
+    (is (= 1 (count (:submits m))) (= 1 (count (:submits d))))
+    (is (= 1 (count (:ledger m))) (= 1 (count (:ledger d))))
+    (is (= (:assessment m) (:assessment d)))))
