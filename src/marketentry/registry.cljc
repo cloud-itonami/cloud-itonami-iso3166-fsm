@@ -215,7 +215,7 @@
    (and citizen-bidder?
         (let [correct (citizen-bidder-preference-correct-pct engagement)]
           (or (= correct :undetermined-by-statute)
-              (not (some-> correct double (== (double claimed-preference-pct)))))))))
+              (not (money= correct claimed-preference-pct)))))))
 
 (defn register-draft
   "Validate + construct the FILING-DRAFT registration DRAFT -- the
