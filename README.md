@@ -46,7 +46,7 @@ as `cloud-itonami-iso3166-caf`/`-btn`/`-bwa`/`-est`:
   purchase valued $500,000-$1,500,000, and facts this iteration could
   NOT verify, such as whether any State has exercised its Title 36
   §206 incorporation opt-in).
-- `src/statute/facts.cljc` -- general-law catalog: Corporations and
+- `src/statute/facts.kotoba` -- general-law catalog: Corporations and
   Business Associations (FSM Code Title 36, national default, PL
   1-135) and the Protection of Resident Workers Act (FSM Code Title 51
   Chapter 1, own primary text). Smaller than some siblings' catalogs
@@ -70,7 +70,7 @@ Wave 1, in `com-junkawasaki/root`) — national dishes, protected products,
 beverages, crafts, festivals and heritage sites for the Federated States
 of Micronesia:
 
-- `src/culture/facts.cljc` — the catalog, source of truth (keyed by
+- `src/culture/facts.kotoba` — the catalog, source of truth (keyed by
   uppercase ISO3, mirroring `statute.facts`).
 - `schema/culture.edn` — DataScript schema.
 - `data/culture-tx.edn` — derived DataScript tx-data (regenerated from

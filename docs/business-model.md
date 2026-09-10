@@ -8,7 +8,7 @@ States of Micronesia.
   own current procurement page cites different, higher operative
   thresholds under the Financial Management Regulations (as amended
   2021) than the 2001-codified statute text (see
-  `src/marketentry/facts.cljc`)
+  `src/marketentry/facts.kotoba`)
 - Foreign Investment Act of 1997 (Title 32 Chapter 2) national/state
   split -- three National Categories (Red/Amber/Green List) plus a
   parallel State Foreign Investment Permit process for every other
