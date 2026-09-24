@@ -8,3 +8,4 @@ dist/
 .shadow-cljs/
 .cpcache/
 .dev.vars
+.nbb/
